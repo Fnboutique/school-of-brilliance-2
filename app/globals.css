@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-offwhite font-sans text-navy antialiased;
+    line-height: 1.65;
+  }
+  h1, h2, h3 { @apply font-display; line-height: 1.2; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-gold; }
+  /* Bengali needs a little more line height to avoid clipped matras */
+  html[data-lang="bn"] body { line-height: 1.8; }
+  html[data-lang="bn"] h1, html[data-lang="bn"] h2, html[data-lang="bn"] h3 { line-height: 1.4; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300;
+  }
+  .btn-gold {
+    @apply btn bg-gold-gradient text-navy shadow-gold hover:-translate-y-0.5 hover:brightness-105;
+  }
+  .btn-ghost-light {
+    @apply btn border border-white/30 text-white hover:border-gold-light hover:bg-white/10;
+  }
+  .btn-outline-navy {
+    @apply btn border border-navy/20 text-navy hover:border-navy hover:bg-navy hover:text-white;
+  }
+  .container-page { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+  .section-pad { @apply py-20 sm:py-28; }
+  .gold-text {
+    background-image: linear-gradient(135deg, #F3C969 0%, #D6A638 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
